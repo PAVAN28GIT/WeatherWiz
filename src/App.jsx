@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
+import Footer from './components/Footer'
 
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
     <div className=" bg-zinc-900 min-h-screen w-full">
       <Navbar />
       <Hero />
+      <Footer />
     </div>
   )
 }

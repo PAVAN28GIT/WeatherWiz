@@ -1,8 +1,8 @@
 import React from 'react'
-import Navbar from './Navbar'
 import WeatherCard from './WeatherCard'
 import Forecast from './Forecast'
 import TodayHighlights from './TodayHighlight'
+import TodayForecast from './TodayForecast'
 
 function Hero() {
 
@@ -17,8 +17,11 @@ function Hero() {
             </div>
     
             {/* Right section: TodayHighlights */}
-            <div className="w-2/3">
+            <div className="w-2/3 overflow-y-auto">
               <TodayHighlights /> 
+              
+              <TodayForecast />
+              
             </div>
           </div>
         </div>
