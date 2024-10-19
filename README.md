@@ -1,6 +1,6 @@
 # WeatherWiz
 
-WeatherWiz is a modern weather application that provides real-time weather updates and forecasts. Built using Vite and React for the frontend, and styled with Tailwind CSS, WeatherWiz offers an intuitive and responsive user experience.
+WeatherWiz is a modern weather application that provides real-time weather updates and forecasts. Built using Vite and React for the frontend, and styled with Tailwind CSS. The application utilizes data from the OpenWeatherMap API to deliver accurate weather information and forecasts for locations around the world.
 
 ## Features
 
