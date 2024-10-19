@@ -9,7 +9,7 @@ const Footer = () => {
                 {/* Left Side */}
                 <div className="w-3/4 justify-start">
                     <h1 className="w-full text-3xl font-nunito text-white font-thin">Pavan Kumar K</h1>
-                    <p className="py-4 font-nunito text-white font-thin">
+                    <p className="py-4 font-nunito text-white font-normal mr-5">
                     Stay ahead of the weather with accurate forecasts and insightful climate data.
                     Whether you're planning your day, organizing an event, or just curious about the skies, WeatherWiz 
                     has you covered.
@@ -20,19 +20,16 @@ const Footer = () => {
                 <div className="ml-10">
                     <h2 className="text-xl text-white font-semibold">About</h2>
                     <ul className="mt-2">
-                        <li className="flex items-center py-2">
-                            <UilGithub className="text-white mr-2" size={24} />
-                            <a href="https://github.com/PAVAN28GIT" className="text-white hover:underline">GitHub</a>
-                        </li>
-                        
+
                         <li className="flex items-center py-2">
                             <UilFileInfoAlt className="text-white mr-2" size={24} />
                             <a href="https://openweathermap.org/api" className="text-white hover:underline">API Documentation</a>
                         </li>
-                       
+                
+                
                         <li className="flex items-center py-2">
                             <UilEnvelope className="text-white mr-2" size={24} />
-                            <a href="mailto:pavancs088@gmail.com" className="text-white hover:underline">Email</a>
+                            <a href="mailto:pavancs088@gmail.com" className="text-white hover:underline">Contact Developer</a>
                         </li>
                     </ul>
                 </div>

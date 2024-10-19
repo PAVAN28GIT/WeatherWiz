@@ -2,7 +2,7 @@ import { UilSun, UilSunset, UilTear, UilTemperature, UilWind, UilClock, UilCloud
 
 const TodayHighlights = () => {
   return (
-    <div className="bg-zinc-800 p-6 mx-3 rounded-lg shadow-md text-white w-full">
+    <div className="bg-zinc-800 p-6 mx-3 rounded-lg shadow-md text-white max-w-full ">
       <h2 className="text-lg font-semibold mb-6">Today's Highlights</h2>
 
       {/* Daily Aggregates */}
