@@ -20,7 +20,7 @@ function Hero() {
             <div className="w-2/3 overflow-y-auto">
               <TodayHighlights /> 
               
-              <TodayForecast />
+              {/* <TodayForecast /> */}
               
             </div>
           </div>
