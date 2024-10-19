@@ -1,8 +1,33 @@
-# React + Vite
+# WeatherWiz
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+WeatherWiz is a modern weather application that provides real-time weather updates and forecasts. Built using Vite and React for the frontend, and styled with Tailwind CSS, WeatherWiz offers an intuitive and responsive user experience.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Real-time weather data
+- 5-day weather forecast
+- Daily Summary
+- Beautiful, responsive design using Tailwind CSS
+- User-friendly interface
+
+## Getting Started
+
+Follow these steps to get WeatherWiz up and running on your local machine:
+
+### Prerequisites
+
+- Ensure you have [Node.js](https://nodejs.org/) installed on your machine.
+- You should also have npm (Node Package Manager) installed. It usually comes with Node.js.
+
+
+## Follow steps:
+
+- git clone https://github.com/PAVAN28GIT/WeatherWiz.git
+- cd WeatherWiz
+- npm install
+- npm run dev
+
+- Now access the application in port it is running
+
+
+
