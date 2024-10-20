@@ -1,7 +1,7 @@
 import React from 'react';
 import { UilClouds, UilSearch } from '@iconscout/react-unicons';
 
-function Navbar() {
+function Navbar({ city, onCityChange, onCelsiusClick, onFahrenheitClick }) {
   return (
     <nav className="flex items-center justify-between p-5 bg-black">
       
@@ -17,7 +17,8 @@ function Navbar() {
           <UilSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-50" />
           <input
             type="text"
-            name="city"
+            value={city} // to display the current city name on search bar
+            onChange={onCityChange}
             placeholder="   search city..."
             className="w-96 pl-10 pr-4 py-3 rounded-full bg-gray-800 text-white border-none focus:outline-none"
           />
@@ -26,9 +27,9 @@ function Navbar() {
 
       {/* Right side */}
       <div className="flex flex-row text-2xl font-thin px-3 text-white">
-        <button className= "px-2 "> °C </button>
+        <button  onClick={onCelsiusClick} className= "px-2 "> °C </button>
         <p> | </p>
-        <button className= "px-2 "> °F </button>
+        <button onClick={onFahrenheitClick} className= "px-2 "> °F </button>
       </div>
     </nav>
   );

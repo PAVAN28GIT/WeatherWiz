@@ -1,7 +1,5 @@
 import { format } from "date-fns";
 
-//https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
-
 const API_KEY = "596852c114e0a61bb23479892decf4a3";
 const BASE_URL = "https://api.openweathermap.org/data/2.5/";
 
@@ -18,41 +16,47 @@ const getWeatherData = (infotype, searchParams) => {
   // res is then converted to json
 };
 
-// middle-man function that gets json data from 1 function and sends it another function to foramte the data
+// middle-man function that gets json data from 1 function and sends it another function to foramt the data
 // and finally returns the formatted data
+
+
 const getFormattedWeatherData = async (searchParams) => {
-  const formattedCurrentWeather = await getWeatherData(
-    "weather",
-    searchParams
-  ).then(formatCurrentWeather);
+  try {
+    // Fetch current weather
+    const formattedCurrentWeather = await getWeatherData("weather", searchParams)
+      .then(formatCurrentWeather);
 
-  // now using the long and latitue -> make forcast API call to get forcast data
-  const { lat, lon } = formattedCurrentWeather;
+    // Destructure lat and lon from the current weather data
+    const { lat, lon } = formattedCurrentWeather;
 
-  let formatted5dForcast;
-  let formattedTodayForcast;
+    // Fetch forecast data based on latitude and longitude
+    const forecastData = await getWeatherData("forecast", {
+      lat,
+      lon,
+      units: searchParams.units,
+    });
 
-  await getWeatherData("forecast", {
-    lat,
-    lon,
-    units: searchParams.units, // units = metric for Celsius, imperial for Fahrenheit, standard for Kelvin
-  }).then((forcast5d_data) => {
-    formatted5dForcast = format5DForcast(forcast5d_data); 
-    formattedTodayForcast = formatTodaysForcast(forcast5d_data);
-  });
+    // Format the forecast data
+    const formatted5dForcast = format5DForcast(forecastData);
+    const formattedTodayForcast = formatTodaysForcast(forecastData);
 
-  console.log("Todays Forcast");
-  console.log(formattedTodayForcast);
+    // Print for debugging
+    console.log("CurrentWeather", formattedCurrentWeather);
+    console.log("5D Forecast", formatted5dForcast);
+    console.log("Today's Forecast", formattedTodayForcast);
 
-  // Return the combined results
-  return {
-    ...formattedCurrentWeather,
-    ...formatted5dForcast,
-    ...formattedTodayForcast,
-  };
+    // Return the combined results
+    return {
+      formattedCurrentWeather,
+      formatted5dForcast,
+      formattedTodayForcast,
+    };
+  } catch (error) {
+    console.error("Error fetching weather data:", error);
+    throw error;  
+  }
 };
 
-// FORMAT FUNCTIONS
 
 // format normal (present) weather data
 const formatCurrentWeather = (data) => {
@@ -68,8 +72,10 @@ const formatCurrentWeather = (data) => {
   // weather is an array so destructing it separately
   // renaming condition as main
   const { main: condition, description, icon } = weather[0];
-  const date = formatUnixToReadable(dt);
-  const round_temp = Math.round(temp);
+
+
+  const sunRise = convertUnixToTime(sunrise);
+  const sunSet = convertUnixToTime(sunset);
 
   return {
     lon,
@@ -77,14 +83,14 @@ const formatCurrentWeather = (data) => {
     condition,
     description,
     icon,
-    round_temp,
+    temp,
     feels_like,
     temp_max,
     temp_min,
-    date,
+    dt,
     country,
-    sunrise,
-    sunset,
+    sunRise,
+    sunSet,
     name,
   };
 };
@@ -108,13 +114,10 @@ const format5DForcast = (data) => {
     dailyTempCounts[entrydate]++;
   });
 
-  const dailyAverages = {};
-
-  for (var date in dailyTempSums) {
-    dailyAverages[date] = Math.round(
-      dailyTempSums[date] / dailyTempCounts[date]
-    );
-  }
+  const dailyAverages = Object.keys(dailyTempSums).map(date => ({
+    date, // Date string
+    temp: Math.round(dailyTempSums[date] / dailyTempCounts[date]) // Average temperature
+  }));
 
   return dailyAverages;
 };
@@ -135,9 +138,20 @@ const formatTodaysForcast = (data) => {
   return todaysForcast;
 };
 
-// function to convert unix tiime to  Sunday 19th October 2024
+//convert unix tiime to  Sunday 19th October 2024
 const formatUnixToReadable = (unixTime) => {
   return format(new Date(unixTime * 1000), "EEEE do MMMM yyyy");
 };
 
+
+function convertUnixToTime(unixTime) {
+  return format(new Date(unixTime * 1000), 'HH:mm');
+}
+
+
+const iconUrlFromCode =(code)=> `http://openweathermap.org/img/wn/${code}@2x.png`
+
+
 export default getFormattedWeatherData;
+
+export {iconUrlFromCode , formatUnixToReadable, convertUnixToTime};
