@@ -14,12 +14,12 @@ WeatherWiz is a modern weather application that provides real-time weather updat
 ## Technology Stack
 
 - `Frontend`
-      - **React.js**: A JavaScript library for building user interfaces.
-      - **Vite**: A fast build tool and development server for modern web applications.
-      - **Tailwind CSS**:A utility-first CSS framework for styling and responsive design.
+- **React.js**: A JavaScript library for building user interfaces.
+- **Vite**: A fast build tool and development server for modern web applications.
+- **Tailwind CSS**:A utility-first CSS framework for styling and responsive design.
 
 - `API`
-   - **OpenWeatherMap API **: Free API for weather data.
+- **OpenWeatherMap API**: Free API for weather data.
 
 
 ## Deployment
