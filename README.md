@@ -10,29 +10,48 @@ WeatherWiz is a modern weather application that provides real-time weather updat
 - Beautiful, responsive design using Tailwind CSS
 - User-friendly interface
 
-## Follow these steps to get WeatherWiz up and running on your local machine:
 
-### Prerequisites
+## Technology Stack
 
-- Ensure you have [Node.js](https://nodejs.org/) installed on your machine.
-- You should also have npm (Node Package Manager) installed. It usually comes with Node.js.
+- `Frontend`
+      - **React.js**: A JavaScript library for building user interfaces.
+      - **Vite**: A fast build tool and development server for modern web applications.
+      - **Tailwind CSS**:A utility-first CSS framework for styling and responsive design.
+
+- `API`
+   - **OpenWeatherMap API **: Free API for weather data.
 
 
-## Follow steps:
+## Deployment
+  - The application is deployed at: [https://weather-wiz-git-main-pavan28gits-projects.vercel.app/](https://weather-wiz-git-main-pavan28gits-projects.vercel.app/)
 
-1. git clone https://github.com/PAVAN28GIT/WeatherWiz.git
-2. cd WeatherWiz
-3. npm install
+## Setup and Installation
 
-4. setup env variables :
-   
-   Create a file named .env.local in the root of your project
-   Inside the file, add the following line replacing <your-api-key> with your actual OpenWeatherMap API key from https://openweathermap.org/api
+To run this project locally, follow these steps:
 
-        VITE_API_KEY=your-api-key
+1. **Clone the repository:**
+   ```sh
+   git clone https://github.com/PAVAN28GIT/WeatherWiz.git
+   cd WeatherWiz
+   ```
 
-5. npm run dev
-6. Now access the application in port it is running
+2. **Install dependencies:**
+   ```sh
+   npm install
+   ```
+3. **Setup env variable**
+   Navigate to services/weatherServices.js and replace <import.meta.env.VITE_API_KEY> with your Actual API key from https://openweathermap.org/api
+   ```sh
+   const API_KEY = <your-api-key>;
+   ```
 
+5. **Run the development server:**
+   ```sh
+   npm run dev
+   ```
+6. **Open your browser and visit:**
+   ```
+   http://localhost:5173
+   ```
 
 

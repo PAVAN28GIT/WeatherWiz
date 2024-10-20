@@ -65,7 +65,6 @@ function App() {
         curWeather={currentWeather}
         forecast5D={forcast5Day}
         forecastToday={forcastToday}
-
       />
       <Footer />
     </div>

@@ -34,8 +34,8 @@ const getFormattedWeatherData = async (searchParams) => {
     const formattedTodayForcast = formatTodaysForcast(forecastData);
 
     // Print for debugging
-    console.log("CurrentWeather", formattedCurrentWeather);
-    console.log("5D Forecast", formatted5dForcast);
+    // console.log("CurrentWeather", formattedCurrentWeather);
+    // console.log("5D Forecast", formatted5dForcast);
     console.log("Today's Forecast", formattedTodayForcast);
 
     // Return the combined results
@@ -107,9 +107,7 @@ const format5DForcast = (data) => {
     dailyTempCounts[entrydate]++;
   });
 
-  const dailyAverages = Object.keys(dailyTempSums).map(date => ({
-    date, // Date string
-    temp: Math.round(dailyTempSums[date] / dailyTempCounts[date]) // Average temperature
+  const dailyAverages = Object.keys(dailyTempSums).map(date => ({ date, temp: Math.round(dailyTempSums[date] / dailyTempCounts[date]) // Average temperature
   }));
 
   return dailyAverages;
@@ -118,16 +116,19 @@ const format5DForcast = (data) => {
 // format todays forcast form 5d forcast data
 const formatTodaysForcast = (data) => {
   const today = format(new Date(), "yyyy-MM-dd");
-  const todaysForcast = {};
+  const todaysForcast = [];
 
   data.list.forEach((entry) => {
     const [entry_date, entry_time] = entry.dt_txt.split(" "); // Split and destructure
 
-    if (entry_date == today) {
-      todaysForcast[entry_time] = entry.main.temp;
-    }
+    if (entry_date === today) {
+     todaysForcast.push({ 
+        time: entry_time, 
+        temp: Math.round(entry.main.temp),
+        icon: entry.weather[0].icon
+      });
+  }
   });
-
   return todaysForcast;
 };
 
@@ -142,9 +143,19 @@ function convertUnixToTime(unixTime) {
 }
 
 
+const convertTo12HourFormat = (time) => {
+  let [hours, minutes, seconds] = time.split(':'); // Split time into hours, minutes, seconds
+  hours = parseInt(hours, 10); // Convert hours to integer
+  
+  const ampm = hours >= 12 ? 'PM' : 'AM'; // Determine AM or PM
+  hours = hours % 12 || 12; // Convert 0 hours to 12 AM, and 13-23 to 1-11 PM
+
+  return `${hours}:${minutes} ${ampm}`; // Return formatted time
+};
+
 const iconUrlFromCode =(code)=> `http://openweathermap.org/img/wn/${code}@2x.png`
 
 
 export default getFormattedWeatherData;
 
-export {iconUrlFromCode , formatUnixToReadable, convertUnixToTime};
+export {iconUrlFromCode , formatUnixToReadable, convertUnixToTime , convertTo12HourFormat};

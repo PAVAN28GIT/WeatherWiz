@@ -2,7 +2,7 @@ import { UilSun, UilSunset, UilTear, UilTemperature, UilWind, UilClock, UilCloud
 
 import { iconUrlFromCode } from '../../services/weatherServices';
 import {convertUnixToTime} from '../../services/weatherServices';
-
+import { convertTo12HourFormat } from '../../services/weatherServices';
 
 
 
@@ -114,14 +114,14 @@ const TodayHighlights = ({weatherNow}) => {
               <UilSun size={30} className="mr-2" />
               <div>
                 <p className="text-sm text-zinc-300">Sunrise</p>
-                <p className="text-lg font-semibold">{`${sunRise}`} Am</p>
+                <p className="text-lg font-semibold">{convertTo12HourFormat(sunRise)}</p>
               </div>
             </div>
             <div className="flex items-center">
               <UilSunset size={30} className="mr-2" />
               <div>
                 <p className="text-sm text-zinc-300">Sunset</p>
-                <p className="text-lg font-semibold">{`${sunSet}`} Pm</p>
+                <p className="text-lg font-semibold">{convertTo12HourFormat(sunSet)}</p>
               </div>
             </div>
           </div>

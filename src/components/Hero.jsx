@@ -18,7 +18,7 @@ function Hero({ curWeather, forecast5D, forecastToday }) {
         <div className="w-full overflow-y-auto pl-4 pr-2">
           <TodayHighlights weatherNow={curWeather} />
           <h2 className="text-lg font-semibold mt-5 ml-4 text-white">Today at</h2>
-          <TodayForecast />
+          <TodayForecast forcast ={forecastToday} />
         </div>
 
 
