@@ -10,9 +10,7 @@ WeatherWiz is a modern weather application that provides real-time weather updat
 - Beautiful, responsive design using Tailwind CSS
 - User-friendly interface
 
-## Getting Started
-
-Follow these steps to get WeatherWiz up and running on your local machine:
+## Follow these steps to get WeatherWiz up and running on your local machine:
 
 ### Prerequisites
 
@@ -22,12 +20,19 @@ Follow these steps to get WeatherWiz up and running on your local machine:
 
 ## Follow steps:
 
-- git clone https://github.com/PAVAN28GIT/WeatherWiz.git
-- cd WeatherWiz
-- npm install
-- npm run dev
+1. git clone https://github.com/PAVAN28GIT/WeatherWiz.git
+2. cd WeatherWiz
+3. npm install
 
-- Now access the application in port it is running
+4. setup env variables :
+   
+   Create a file named .env.local in the root of your project
+   Inside the file, add the following line replacing <your-api-key> with your actual OpenWeatherMap API key from https://openweathermap.org/api
+
+        VITE_API_KEY=your-api-key
+
+5. npm run dev
+6. Now access the application in port it is running
 
 
 
