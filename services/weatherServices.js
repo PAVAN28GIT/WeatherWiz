@@ -1,23 +1,16 @@
 import { format } from "date-fns";
 
-const API_KEY = "596852c114e0a61bb23479892decf4a3";
+const API_KEY = import.meta.env.VITE_API_KEY;
+
 const BASE_URL = "https://api.openweathermap.org/data/2.5/";
 
 // constructs URL and gets response as json data
 const getWeatherData = (infotype, searchParams) => {
-  //combining BASE_URL and infotype to construct URL.
-  const url = new URL(BASE_URL + infotype);
-  // appending search parameters and api key to url
-  url.search = new URLSearchParams({ ...searchParams, appid: API_KEY });
-  // ... is spread operator that includes every object(key-value pair) in search parameter
 
-  return fetch(url).then((res) => res.json());
-  //fetch(url) is used to make an HTTP request to the constructed URL.
-  // res is then converted to json
+  const url = new URL(BASE_URL + infotype);   //combining BASE_URL and infotype to construct URL.
+  url.search = new URLSearchParams({ ...searchParams, appid: API_KEY });   // appending search parameters and api key to url
+  return fetch(url).then((res) => res.json()); //fetch(url) is used to make an HTTP request to the constructed URL.
 };
-
-// middle-man function that gets json data from 1 function and sends it another function to foramt the data
-// and finally returns the formatted data
 
 
 const getFormattedWeatherData = async (searchParams) => {

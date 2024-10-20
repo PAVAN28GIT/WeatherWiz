@@ -17,11 +17,9 @@ const TodayHighlights = ({weatherNow}) => {
 
   // Destructure weatherNow inside the component body
   const {
-
     condition,
     description,
     icon,
-
     feels_like,
     temp_max,
     temp_min,
@@ -37,7 +35,7 @@ const TodayHighlights = ({weatherNow}) => {
 
 
   return (
-    <div className="bg-zinc-800 p-6 mx-3 rounded-lg shadow-md text-white max-w-full ">
+    <div className="bg-zinc-800 px-4 py-2 mx-2 rounded-lg shadow-md text-white max-w-full ">
       <h2 className="text-lg font-semibold mb-6">Today's Highlights</h2>
 
       {/* Daily Aggregates */}

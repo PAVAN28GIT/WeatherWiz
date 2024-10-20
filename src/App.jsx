@@ -50,12 +50,6 @@ function App() {
 
   }, [city, units]);
 
-  useEffect(() => {
-    console.log("Forecast 5 Day 953405:", forcast5Day);
-  }, [forcast5Day]); // Runs whenever forecast5Day changes
-  
-  
-
 
 
   return (
@@ -65,6 +59,7 @@ function App() {
         onCityChange={handleCityChange}
         onCelsiusClick={handleCelsiusClick}
         onFahrenheitClick={handleFahrenheitClick}
+        units={units}
       />
       <Hero
         curWeather={currentWeather}
