@@ -72,7 +72,3 @@ function App() {
 }
 
 export default App;
-
-// https://api.openweathermap.org/data/2.5/%20?lat=44.34&lon=10.99&appid=596852c114e0a61bb23479892decf4a3
-
-// https://api.openweathermap.org/data/2.5/weather?q=Mysore&appid=596852c114e0a61bb23479892decf4a3

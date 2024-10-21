@@ -2,8 +2,6 @@ import React from 'react'
 import { iconUrlFromCode } from '../../services/weatherServices';
 import { convertTo12HourFormat } from '../../services/weatherServices';
 
-
-
 function TodayForecast({ forcast }) {
   return (
     <div className="bg-zinc-800 p-2 mx-3 rounded-lg shadow-md text-white max-w-full">
@@ -19,8 +17,5 @@ function TodayForecast({ forcast }) {
     </div>
   );
 }
-
-    
-
 
 export default TodayForecast
