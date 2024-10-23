@@ -7,6 +7,8 @@ function Navbar({
   onCelsiusClick,
   onFahrenheitClick,
   units,
+  onAlertClick,
+  showAlert
 }) {
   return (
     <nav className="flex flex-col lg:flex-row items-center justify-between p-5 bg-black">
@@ -30,32 +32,43 @@ function Navbar({
         </div>
       </div>
 
-      {/* Right side */}
-      <div className="flex flex-row text-lg lg:text-2xl font-thin px-2 text-white bg-gradient-to-r from-blue-500 to-purple-500 py-1 rounded-lg shadow-lg">
-        <button
-          onClick={onCelsiusClick}
-          className={`px-3 font-normal rounded-full transition duration-300 ease-in-out transform hover:scale-105 ${
-            units === "metric"
-              ? "bg-cyan-100 text-black shadow-md"
-              : "text-white"
-          }`}>
-          °C
-        </button>
-        <p className="px-2"> | </p>
-        <button
-          onClick={onFahrenheitClick} 
-          className={`px-3 font-normal rounded-full transition duration-300 ease-in-out transform hover:scale-105 ${
-            units === "imperial"
-              ? "bg-cyan-100 text-black shadow-md"
-              : "text-white"
-          }`}>
-          °F
-        </button>
+      {/* Right side with Set Alert button */}
+      <div className="flex flex-row items-center">
+        <div className="mx-4 text-lg lg:text-xl font-normal px-2 py-1 text-white bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg shadow-lg">
+          {/* <button className="px-3 w-28" onClick={onAlertClick}>
+            Set Alert
+          </button> */}
+          <button className="px-3 w-28" onClick={onAlertClick}>
+            {showAlert ? "Go back" : "Set Alert"}
+          </button>
+        </div>
+
+        <div className="flex flex-row text-lg lg:text-2xl font-thin px-2 text-white bg-gradient-to-r from-blue-500 to-purple-500 py-1 rounded-lg shadow-lg">
+          <button
+            onClick={onCelsiusClick}
+            className={`px-3 font-normal rounded-full transition duration-300 ease-in-out transform hover:scale-105 ${
+              units === "metric"
+                ? "bg-cyan-100 text-black shadow-md"
+                : "text-white"
+            }`}
+          >
+            °C
+          </button>
+          <p className="px-2"> | </p>
+          <button
+            onClick={onFahrenheitClick}
+            className={`px-3 font-normal rounded-full transition duration-300 ease-in-out transform hover:scale-105 ${
+              units === "imperial"
+                ? "bg-cyan-100 text-black shadow-md"
+                : "text-white"
+            }`}
+          >
+            °F
+          </button>
+        </div>
       </div>
     </nav>
   );
 }
 
 export default Navbar;
-
-

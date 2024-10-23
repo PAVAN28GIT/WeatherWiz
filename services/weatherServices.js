@@ -1,17 +1,17 @@
 import { format } from "date-fns";
+import Alert from "../src/components/Alert";
 
 const API_KEY = import.meta.env.VITE_API_KEY;
 
 const BASE_URL = "https://api.openweathermap.org/data/2.5/";
 
-// constructs URL and gets response as json data
+//constructs URL and gets response as json data
 const getWeatherData = (infotype, searchParams) => {
 
   const url = new URL(BASE_URL + infotype);   //combining BASE_URL and infotype to construct URL.
   url.search = new URLSearchParams({ ...searchParams, appid: API_KEY });   // appending search parameters and api key to url
   return fetch(url).then((res) => res.json()); //fetch(url) is used to make an HTTP request to the constructed URL.
 };
-
 
 const getFormattedWeatherData = async (searchParams) => {
   try {
@@ -46,17 +46,17 @@ const getFormattedWeatherData = async (searchParams) => {
     };
   } catch (error) {
     console.error("Error fetching weather data:", error);
+    Alert("Error fetching weather data");
     throw error;  
   }
 };
-
 
 // format normal (present) weather data
 const formatCurrentWeather = (data) => {
   const {
     coord: { lon, lat },
     weather,
-    main: { temp, feels_like, temp_min, temp_max },
+    main: { temp, feels_like, temp_min, temp_max ,humidity},
     dt,
     sys: { country, sunrise, sunset },
     name,
@@ -80,6 +80,7 @@ const formatCurrentWeather = (data) => {
     feels_like,
     temp_max,
     temp_min,
+    humidity,
     dt,
     country,
     sunRise,
@@ -137,11 +138,9 @@ const formatUnixToReadable = (unixTime) => {
   return format(new Date(unixTime * 1000), "EEEE do MMMM yyyy");
 };
 
-
 function convertUnixToTime(unixTime) {
   return format(new Date(unixTime * 1000), 'HH:mm');
 }
-
 
 const convertTo12HourFormat = (time) => {
   let [hours, minutes, seconds] = time.split(':'); // Split time into hours, minutes, seconds
@@ -154,7 +153,6 @@ const convertTo12HourFormat = (time) => {
 };
 
 const iconUrlFromCode =(code)=> `http://openweathermap.org/img/wn/${code}@2x.png`
-
 
 export default getFormattedWeatherData;
 
