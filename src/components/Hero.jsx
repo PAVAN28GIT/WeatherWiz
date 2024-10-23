@@ -19,18 +19,10 @@ function Hero({ curWeather, forecast5D, forecastToday, onAlertClick ,showAlert, 
         {/* Today's Highlights */}
         <div className="w-full lg:w-2/3 overflow-y-auto pl-0 lg:pl-4 pr-2">
 
-        {showAlert ? (
-            <Alert onAlertClick={onAlertClick} setThresholdsSet={setThresholdsSet} thresholdsSet={thresholdsSet} />
-          ) : (
-            <>
-              <h2 className="text-lg font-semibold ml-5 text-white">Today's Highlights</h2>
-              <TodayHighlights weatherNow={curWeather} />
-              <h2 className="text-lg font-semibold mt-5 ml-5 text-white">Today at</h2>
-              <TodayForecast forcast={forecastToday} />
-            </>
-          )}
-
-          
+          <h2 className="text-lg font-semibold ml-5 text-white">Today's Highlights</h2>
+          <TodayHighlights weatherNow={curWeather} />
+          <h2 className="text-lg font-semibold mt-5 ml-5 text-white">Today at</h2>
+          <TodayForecast forcast={forecastToday} />    
         </div>
       </div>
     </div>

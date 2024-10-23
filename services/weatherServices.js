@@ -1,17 +1,36 @@
 import { format } from "date-fns";
-import Alert from "../src/components/Alert";
+import { showToast } from "../src/utils/toast";
 
 const API_KEY = import.meta.env.VITE_API_KEY;
 
 const BASE_URL = "https://api.openweathermap.org/data/2.5/";
 
-//constructs URL and gets response as json data
-const getWeatherData = (infotype, searchParams) => {
 
-  const url = new URL(BASE_URL + infotype);   //combining BASE_URL and infotype to construct URL.
-  url.search = new URLSearchParams({ ...searchParams, appid: API_KEY });   // appending search parameters and api key to url
-  return fetch(url).then((res) => res.json()); //fetch(url) is used to make an HTTP request to the constructed URL.
+const getWeatherData = async (infotype, searchParams) => {
+  try {
+    showToast('Fetcing Data','loading')
+    const url = new URL(BASE_URL + infotype);  // Construct URL
+    url.search = new URLSearchParams({ ...searchParams, appid: API_KEY });  // Append search params and API key
+
+    const response = await fetch(url);  // Make API request
+    const data = await response.json(); // Parse response as JSON
+
+    showToast('','dismiss')
+
+    // Check if 'cod' is not 200 (success) and handle errors
+    if (data.cod === '404') {
+      showToast('City not found','error')
+    }
+
+    return data;  // Return weather data if successful
+  } catch (error) {
+    showToast('Error fetching data','error')
+    console.log("Error:", error.message);  // Log the error
+    return { error: error.message };  // Return error message
+  }
 };
+
+
 
 const getFormattedWeatherData = async (searchParams) => {
   try {
@@ -33,9 +52,6 @@ const getFormattedWeatherData = async (searchParams) => {
     const formatted5dForcast = format5DForcast(forecastData);
     const formattedTodayForcast = formatTodaysForcast(forecastData);
 
-    // Print for debugging
-    // console.log("CurrentWeather", formattedCurrentWeather);
-    // console.log("5D Forecast", formatted5dForcast);
     console.log("Today's Forecast", formattedTodayForcast);
 
     // Return the combined results
@@ -46,7 +62,6 @@ const getFormattedWeatherData = async (searchParams) => {
     };
   } catch (error) {
     console.error("Error fetching weather data:", error);
-    Alert("Error fetching weather data");
     throw error;  
   }
 };

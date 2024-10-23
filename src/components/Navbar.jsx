@@ -7,9 +7,13 @@ function Navbar({
   onCelsiusClick,
   onFahrenheitClick,
   units,
-  onAlertClick,
-  showAlert
 }) {
+
+const showThresholdDialog = ()=>{
+  const modal = document.getElementById('my_modal_1')
+  modal.showModal();
+}
+
   return (
     <nav className="flex flex-col lg:flex-row items-center justify-between p-5 bg-black">
       {/* Left side */}
@@ -35,11 +39,8 @@ function Navbar({
       {/* Right side with Set Alert button */}
       <div className="flex flex-row items-center">
         <div className="mx-4 text-lg lg:text-xl font-normal px-2 py-1 text-white bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg shadow-lg">
-          {/* <button className="px-3 w-28" onClick={onAlertClick}>
+          <button onClick={showThresholdDialog} className="px-3 w-28 text-nowrap cursor-pointer" >
             Set Alert
-          </button> */}
-          <button className="px-3 w-28" onClick={onAlertClick}>
-            {showAlert ? "Go back" : "Set Alert"}
           </button>
         </div>
 
