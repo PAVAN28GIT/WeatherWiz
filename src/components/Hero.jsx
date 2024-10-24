@@ -3,9 +3,8 @@ import WeatherCard from "./WeatherCard";
 import Forecast from "./Forecast";
 import TodayHighlights from "./TodayHighlight";
 import TodayForecast from "./TodayForecast";
-import Alert from "./Alert";
 
-function Hero({ curWeather, forecast5D, forecastToday, onAlertClick ,showAlert, setThresholdsSet, thresholdsSet}) {
+function Hero({ curWeather, forecast5D, forecastToday}) {
   return (
     <div className="bg-zinc-900 p-3 md:p-10 max-w-full font-nunito">
       <div className="flex flex-col lg:flex-row w-full">
