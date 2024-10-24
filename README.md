@@ -47,11 +47,6 @@ To run this project locally, follow these steps:
    ```sh
    npm install
    ```
-3. **Setup env variable**
-   Navigate to services/weatherServices.js and replace <import.meta.env.VITE_API_KEY> with your Actual API key from https://openweathermap.org/api
-   ```sh
-   const API_KEY = <your-api-key>;
-   ```
 
 5. **Run the development server:**
    ```sh

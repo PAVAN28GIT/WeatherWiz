@@ -1,7 +1,8 @@
 import { format } from "date-fns";
 import { showToast } from "../src/utils/toast";
 
-const API_KEY = import.meta.env.VITE_API_KEY;
+const API_KEY ="596852c114e0a61bb23479892decf4a3"// free API only for the purpose of Assignment its left public else
+//const API_KEY = import.meta.env.VITE_API_KEY;
 
 const BASE_URL = "https://api.openweathermap.org/data/2.5/";
 
