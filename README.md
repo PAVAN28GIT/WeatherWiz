@@ -8,15 +8,16 @@ WeatherWiz is a modern weather application that provides real-time weather updat
 - 5-day weather forecast (Average weather in 5 days)
 - Daily Summary
 - Today's Forcast (Interval of 3 hours)
+- Set Custom Alerts on Temperature
 - switch between Fahrenheit to Celsius
+- Error Handling for "City Not found"
 
 
 ## ScreenShots
-<img width="1440" alt="Screenshot 2024-10-21 at 8 14 34 AM" src="https://github.com/user-attachments/assets/eb34f2d2-084e-47a1-b365-31bcca9c2292">
-
-<img width="1440" alt="Screenshot 2024-10-21 at 8 15 51 AM" src="https://github.com/user-attachments/assets/30eeb526-1be4-44c2-8baa-48ec2d117024">
-
-<img width="1440" alt="Screenshot 2024-10-21 at 8 18 42 AM" src="https://github.com/user-attachments/assets/135d808d-cf55-4c40-81cd-fa6e5738f943">
+<img width="1440" alt="Screenshot 2024-10-24 at 10 32 33 AM" src="https://github.com/user-attachments/assets/bf74cdf4-4faa-49a4-989b-8e98a19610cd">
+<img width="1440" alt="Screenshot 2024-10-24 at 10 33 00 AM 2" src="https://github.com/user-attachments/assets/59170233-0861-4b8e-bc42-ac39cd434a44">
+<img width="1440" alt="Screenshot 2024-10-24 at 10 35 04 AM 2" src="https://github.com/user-attachments/assets/3f9977a2-a387-46c8-a622-0b678a4fa44a">
+<img width="1440" alt="Screenshot 2024-10-24 at 10 35 06 AM 2" src="https://github.com/user-attachments/assets/045fd91f-aee3-4e79-b538-c7d198b5074c">
 
 
 
